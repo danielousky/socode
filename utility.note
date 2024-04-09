@@ -85,7 +85,15 @@ gem "font-awesome-sass", "~> 6.5.1"
 https://fontawesome.com/v6/docs/web/use-with/rails-turbolinks
 # No aplicado hasta ahora
 
+# Actualicé application.rb para set de locale, timezone and set false generators
+    config.generators do |generate|
+      generate.assets false
+      generate.helper false
+      generate.test_framework :test_unit, fixture: false, test: false
+      generate.system_tests = nil
+    end
 
-# 
+    config.i18n.default_locale = :es
+    config.time_zone = "Caracas"    
 
 # ---- DEVISE ----
