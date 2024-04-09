@@ -8,7 +8,7 @@
 # Instalé rails 7.0.8:
   gem install rails -v 7.0.8
 # Generé una nueva applicación rails (7.0.8):
-  rails new coes2 -T -d postgresql
+  rails new socode -T -d postgresql
 
 # ---- CONFIGURACIÓN INICIAL DEL SERVIDOR: ---- #
 #(Opcionales):
@@ -18,24 +18,26 @@
 #reboot
 En Servidor: 
 sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git
-dokku apps:create coes2
-dokku postgres:create coes2_production
-dokku postgres:link coes2_production coes2
+dokku apps:create socode
+dokku postgres:create socode_production
+dokku postgres:link socode_production socode
 cat ~/.ssh/authorized_keys | dokku ssh-keys:add admin
 
-dokku buildpacks:add coes2 https://github.com/heroku/heroku-buildpack-ruby.git
-
-rm /etc/nginx/sites-enabled/default
-dokku nginx:stop
-dokku nginx:start
+dokku buildpacks:add socode https://github.com/heroku/heroku-buildpack-ruby.git
 
 En local: 
-git remote add dokku dokku@165.227.188.67:coes2
+git remote add dokku dokku@XX.XX.XX.XX:socode
 git push dokku master
-cat ~/.ssh/id_rsa.pub | ssh root@165.227.188.67 dokku ssh-keys:add dokku
+cat ~/.ssh/id_rsa.pub | ssh root@XX.XX.XX.XX dokku ssh-keys:add dokku
 bundle lock --add-platform x86_64-linux
 rails g controller inicio index
 git push dokku master
+
+
+Luego en el Servidor:
+rm /etc/nginx/sites-enabled/default
+dokku nginx:stop
+dokku nginx:start
 
 # ---- BOOTSTRAP: ----#
 # Instalé Bootstrap con Importmap haciendo una combinación de soluciones:
@@ -78,8 +80,12 @@ release: rake db:migrate
 https://fontawesome.com/v6/docs/web/use-with/ruby-on-rails
 
 gem "font-awesome-sass", "~> 6.5.1"
+
 # Adicionalemente, para páginas más dinámicas con Turbolinks puede ser necesario esta:
 https://fontawesome.com/v6/docs/web/use-with/rails-turbolinks
+# No aplicado hasta ahora
 
+
+# 
 
 # ---- DEVISE ----
