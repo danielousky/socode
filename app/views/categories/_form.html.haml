@@ -1,13 +1,5 @@
-= form_for @category do |f|
-  - if @category.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
-      %ul
-        - @category.errors.full_messages.each do |message|
-          %li= message
+= simple_form_for @category do |f|
+  = f.input :name, label: 'Nombre de la Categoria', error: 'Nombre es obligatorio'
+  = f.input :color, as: :color 
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit 'Save'
+  = f.button :submit

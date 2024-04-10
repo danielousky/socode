@@ -1,6 +1,8 @@
 %p#notice= notice
 
-
-= link_to 'Edit', edit_snippet_path(@snippet)
+%h3.text-center= @snippet.title
+.content.align-center
+    = raw @snippet.content
+= link_to 'Edit', edit_snippet_path(@snippet), class: 'btn btn-rpimary'
 \|
-= link_to 'Back', snippets_path
+= link_to 'Back', snippets_path, class: 'btn btn-default'

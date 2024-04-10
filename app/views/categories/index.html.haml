@@ -1,20 +1,24 @@
 %h1 Listing categories
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th
-      %th
-      %th
-
-  %tbody
-    - @categories.each do |category|
+.table-respon 
+  %table.table.table-sm.table-striped
+    %thead
       %tr
-        %td= category.name
-        %td= link_to 'Show', category
-        %td= link_to 'Edit', edit_category_path(category)
-        %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Name
+        %th Color
+        %th Total Snippets
+        %th
+        %th
+        %th
+
+    %tbody
+      - @categories.each do |category|
+        %tr
+          %td= category.name
+          %td{style: "background-color: #{category.color}"}
+          %td= category.snippets.count
+          %td= link_to 'Show', category
+          %td= link_to 'Edit', edit_category_path(category)
+          %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

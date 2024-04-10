@@ -4,6 +4,9 @@ import "controllers"
 import "popper"
 import "bootstrap"
 
+import "trix"
+import "@rails/actiontext"
+
 document.addEventListener('DOMContentLoaded', function() {
   let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))  
   let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {  

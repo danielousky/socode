@@ -1,10 +1,13 @@
-= form_for @snippet do |f|
-  - if @snippet.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@snippet.errors.count, "error")} prohibited this snippet from being saved:"
-      %ul
-        - @snippet.errors.full_messages.each do |message|
-          %li= message
+= simple_form_for @snippet do |f|
+  = f.input :title
+  = f.rich_text_area :content
+  =# f.collection_check_boxes :categories, Category.all.map{|c| [c.id, c.name]}, :first, :last, item_label_class: 'btn btn-info m-2'
+  = f.collection_check_boxes :category_ids, Category.all, :id, :name, item_label_class: 'btn btn-info m-2'
 
-  .actions
-    = f.submit 'Save'
+  =# f.collection_check_boxes :categories, Category.all, :id, :name do |category|
+  =# f.check_box 'categories_id', checked: false
+  =# category.name
+
+  %br
+  = f.button :submit, class: 'btn btn-success' 
+

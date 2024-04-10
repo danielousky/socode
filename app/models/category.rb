@@ -8,4 +8,7 @@
 #  updated_at :datetime         not null
 #
 class Category < ApplicationRecord
+    validates :name, presence: true
+    validates :color, presence: true
+    has_and_belongs_to_many :snippets
 end

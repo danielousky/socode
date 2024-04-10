@@ -52,6 +52,10 @@ dokku nginx:start
   Rails.application.config.assets.precompile += %w( bootstrap.min.js popper.js )
 
 # Finalmente, agregué al application.js las 2 instrucciones para incorporar tanto Popper como Tooltips:
+en el archivo importmap.rb
+pin "popper", to: 'popper.js', preload: true
+pin "bootstrap", to: 'bootstrap.min.js', preload: true
+
 # AYUDA en esta etapa: https://bootrails.com/blog/rails-7-bootstrap-5-tutorial/#adding-custom-bootstrap-based-javascript-into-rails
 
 # let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))  
@@ -95,5 +99,17 @@ https://fontawesome.com/v6/docs/web/use-with/rails-turbolinks
 
     config.i18n.default_locale = :es
     config.time_zone = "Caracas"    
+
+# ---- ACTION TEXT -----#
+https://guides.rubyonrails.org/action_text_overview.html
+
+rails action_text:install
+
+
+import "trix"
+import "@rails/actiontext"
+
+
+
 
 # ---- DEVISE ----
